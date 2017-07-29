@@ -1,4 +1,5 @@
-﻿using E08_MilitaryElite.Models;
+﻿using E08_MilitaryElite.Interfaces;
+using E08_MilitaryElite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,28 +8,42 @@ namespace E08_MilitaryElite
 {
     public class Program
     {
+        public static IList<ISoldier> army;
+
+        private enum corpTypes { Airforces, Marines }
+
+        private enum missionState { inProgress, Finished };
+
         public static void Main()
         {
-            var soldierInfo = string.Empty;
-            var privateSoldiers = new List<Private>();
-            while ((soldierInfo = Console.ReadLine().Trim()) != "End")
+            var input = string.Empty;
+            army = new List<ISoldier>();
+            while ((input = Console.ReadLine().Trim()) != "End")
             {
-                var soldierArgs = soldierInfo.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var soldierArgs = input.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 switch (soldierArgs[0])
                 {
                     case "Private":
-                        CreatePrivate(soldierArgs, privateSoldiers);
+                        CreatePrivate(soldierArgs);
                         break;
 
                     case "LeutenantGeneral":
-                        CreateLeutenantGeneral(soldierArgs, privateSoldiers);
+                        CreateLeutenantGeneral(soldierArgs);
                         break;
 
                     case "Engineer":
+                        if (soldierArgs[5] != corpTypes.Airforces.ToString() && soldierArgs[5] != corpTypes.Marines.ToString())
+                        {
+                            break;
+                        }
                         CreateEngineer(soldierArgs);
                         break;
 
                     case "Commando":
+                        if (soldierArgs[5] != corpTypes.Airforces.ToString() && soldierArgs[5] != corpTypes.Marines.ToString())
+                        {
+                            break;
+                        }
                         CretaeCommando(soldierArgs);
                         break;
 
@@ -36,6 +51,11 @@ namespace E08_MilitaryElite
                         CreateSpy(soldierArgs);
                         break;
                 }
+            }
+
+            foreach (var soldier in army)
+            {
+                Console.WriteLine(soldier);
             }
         }
 
@@ -45,9 +65,7 @@ namespace E08_MilitaryElite
             var firstName = soldierArgs[2];
             var lastName = soldierArgs[3];
             var codeNumber = int.Parse(soldierArgs[4]);
-            var spy = new Spy(id, firstName, lastName, codeNumber);
-
-            Console.WriteLine(spy.ToString());
+            army.Add(new Spy(id, firstName, lastName, codeNumber));
         }
 
         private static void CretaeCommando(string[] soldierArgs)
@@ -57,19 +75,18 @@ namespace E08_MilitaryElite
             var lastName = soldierArgs[3];
             var salary = double.Parse(soldierArgs[4]);
             var corp = soldierArgs[5];
-            var commando = new Commando(id, firstName, lastName, salary, corp);
-
-            var missionCount = (soldierArgs.Length - 6) / 2;
-            var indexer = 6;
-            for (int i = missionCount; i > 0; i--)
+            var missions = new List<IMission>();
+            var missionsArg = soldierArgs.Skip(6).ToList();
+            for (int i = 0; i < missionsArg.Count() - 1; i += 2)
             {
-                var missionCodeName = soldierArgs[indexer];
-                var missionState = soldierArgs[indexer + 1];
-                commando.Missions.Add(new Mission(missionCodeName, missionState));
-                indexer += 2;
+                if (missionsArg[i + 1] != missionState.Finished.ToString() && missionsArg[i + 1] != missionState.inProgress.ToString())
+                {
+                    continue;
+                }
+                missions.Add(new Mission(missionsArg[i], missionsArg[i + 1]));
             }
-
-            Console.WriteLine(commando.ToString());
+            var commando = new Commando(id, firstName, lastName, salary, corp, missions);
+            army.Add(commando);
         }
 
         private static void CreateEngineer(string[] soldierArgs)
@@ -79,47 +96,40 @@ namespace E08_MilitaryElite
             var lastName = soldierArgs[3];
             var salary = double.Parse(soldierArgs[4]);
             var corp = soldierArgs[5];
-            var engineer = new Engineer(id, firstName, lastName, salary, corp);
-
-            var repairCount = (soldierArgs.Length - 6) / 2;
-            var indexer = 6;
-            for (int i = repairCount; i > 0; i--)
+            var parts = new List<IRepair>();
+            var partsArgs = soldierArgs.Skip(6).ToList();
+            for (int i = 0; i < partsArgs.Count() - 1; i += 2)
             {
-                var repairPart = soldierArgs[indexer];
-                var repairHours = int.Parse(soldierArgs[indexer + 1]);
-                engineer.Repairs.Add(new Repair(repairPart, repairHours));
-                indexer += 2;
+                parts.Add(new Repair(partsArgs[i], int.Parse(partsArgs[i + 1])));
             }
-
-            Console.WriteLine(engineer.ToString());
+            var engineer = new Engineer(id, firstName, lastName, salary, corp, parts);
+            army.Add(engineer);
         }
 
-        private static void CreateLeutenantGeneral(string[] soldierArgs, List<Private> privateSoldiers)
+        private static void CreateLeutenantGeneral(string[] soldierArgs)
         {
             var id = int.Parse(soldierArgs[1]);
             var firstName = soldierArgs[2];
             var lastName = soldierArgs[3];
             var salary = double.Parse(soldierArgs[4]);
-            var leutenantGeneral = new LeutenantGeneral(id, firstName, lastName, salary);
-            var privateNumber = soldierArgs.Length - 5;
-            for (int i = 5; i < 5 + privateNumber; i += 1)
+            var privates = new List<ISoldier>();
+            var privatesArgs = soldierArgs.Skip(5).ToList();
+            foreach (var privId in soldierArgs.Skip(5))
             {
-                var privateSoldier = privateSoldiers.Where(s => s.Id == int.Parse(soldierArgs[i])).FirstOrDefault();
-                leutenantGeneral.AddPrivate(privateSoldier);
+                var soldier = army.First(s => s.Id == int.Parse(privId));
+                privates.Add(soldier);
             }
-            Console.WriteLine(leutenantGeneral.ToString());
+            var leutenantGeneral = new LeutenantGeneral(id, firstName, lastName, salary, privates);
+            army.Add(leutenantGeneral);
         }
 
-        private static void CreatePrivate(string[] soldierArgs, List<Private> privateSoldiers)
+        private static void CreatePrivate(string[] soldierArgs)
         {
             var id = int.Parse(soldierArgs[1]);
             var firstName = soldierArgs[2];
             var lastName = soldierArgs[3];
             var salary = double.Parse(soldierArgs[4]);
-            var privateSoldier = new Private(id, firstName, lastName, salary);
-            privateSoldiers.Add(privateSoldier);
-
-            Console.WriteLine(privateSoldier.ToString());
+            army.Add(new Private(id, firstName, lastName, salary));
         }
     }
 }

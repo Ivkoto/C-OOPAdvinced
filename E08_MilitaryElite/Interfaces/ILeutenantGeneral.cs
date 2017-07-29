@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace E08_MilitaryElite.Interfaces
 {
-    public interface ILeutenantGeneral
+    public interface ILeutenantGeneral : IPrivate
     {
-        HashSet<Private> Privates { get; }
+        IList<ISoldier> Soldiers { get; }
     }
 }

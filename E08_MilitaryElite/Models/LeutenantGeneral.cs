@@ -7,30 +7,21 @@ namespace E08_MilitaryElite.Models
 {
     public class LeutenantGeneral : Private, ILeutenantGeneral
     {
-        public LeutenantGeneral(int id, string firstName, string lastName, double salary)
+        public LeutenantGeneral(int id, string firstName, string lastName, double salary, IList<ISoldier> soldiers)
             :base(id, firstName, lastName, salary)
         {
-            this.Privates = new HashSet<Private>();
+            this.Soldiers = soldiers;
         }
-        public HashSet<Private> Privates { get; private set; }
-
-        public void AddPrivate(Private priv)
-        {
-            this.Privates.Add(priv);
-        }
+        public IList<ISoldier> Soldiers { get; private set; }
+        
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {this.Salary :f2}")
-              .AppendLine("Privates:");
-            foreach (var @private in Privates)
-            {
-                sb.AppendLine($"  {@private.ToString()}");
-            }
-
-            return sb.ToString();
+              sb.AppendLine($"{base.ToString()}")
+              .AppendLine("Privates:")
+              .AppendLine($"  {string.Join(Environment.NewLine + "  ", this.Soldiers)}");
+            return sb.ToString().Trim();
         }
     }
 }

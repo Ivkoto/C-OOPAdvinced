@@ -2,7 +2,7 @@
 {
     public interface IMission
     {
-        string CodeName { get; }
+        string Name { get; }
         string State { get; }
 
         void CompleteMission();

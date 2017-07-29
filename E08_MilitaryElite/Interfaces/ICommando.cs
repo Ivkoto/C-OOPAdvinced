@@ -2,8 +2,10 @@
 
 namespace E08_MilitaryElite.Interfaces
 {
-    public interface ICommando
+    public interface ICommando : ISpecialisedSoldier
     {
-        HashSet<IMission> Missions { get; }
+        IList<IMission> Missions { get; }
+
+        void CompleteMission();
     }
 }

@@ -2,8 +2,8 @@
 
 namespace E08_MilitaryElite.Interfaces
 {
-    public interface IEngineer
+    public interface IEngineer : ISpecialisedSoldier
     {
-        HashSet<IRepair> Repairs { get; }
+        IList<IRepair> Parts { get; }
     }
 }

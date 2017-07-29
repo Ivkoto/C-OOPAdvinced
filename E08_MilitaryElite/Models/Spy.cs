@@ -16,11 +16,7 @@ namespace E08_MilitaryElite.Models
 
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id}")
-              .Append($"Code Number: {this.CodeNumber}");
-
-            return sb.ToString();
+            return $"{base.ToString()}" + Environment.NewLine + $"Code Number: {this.CodeNumber}";
         }
     }
 }

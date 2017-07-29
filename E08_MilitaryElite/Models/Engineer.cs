@@ -7,26 +7,22 @@ namespace E08_MilitaryElite.Models
 {
     public class Engineer : SpecialisedSoldier, IEngineer
     {
-        public Engineer(int id, string firstName, string lastName, double salary, string corp) 
+        public Engineer(int id, string firstName, string lastName, double salary, string corp, IList<IRepair> parts) 
             : base(id, firstName, lastName, salary, corp)
         {
-            this.Repairs = new HashSet<IRepair>();
+            this.Parts = parts;
         }
 
-        public HashSet<IRepair> Repairs { get; private set; }
+        public IList<IRepair> Parts { get; private set; }
 
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.AppendLine($"Name: {base.FirstName} {base.LastName} Id: {base.Id} Salary: {this.Salary :f2}")
-              .AppendLine($"Corps: {base.Corp}")
-              .AppendLine("Repairs:");
-            foreach (var repair in Repairs)
-            {
-                sb.AppendLine($"  {repair.ToString()}");
-            }
+            sb.AppendLine($"{base.ToString()}")
+              .AppendLine("Repairs:")
+              .AppendLine($"  {string.Join(Environment.NewLine + "  ", this.Parts)}");
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
     }
 }
