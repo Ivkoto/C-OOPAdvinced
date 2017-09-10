@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-public class Box<T>
+public class Box<T> : IBox<T>
 {
     private IList<T> data;
 
@@ -19,8 +19,8 @@ public class Box<T>
 
     public T Remove()
     {
-        var removed = this.data.LastOrDefault();
+        var lastElement = this.data.LastOrDefault();
         this.data.RemoveAt(this.data.Count - 1);
-        return removed;
+        return lastElement;
     }
 }
