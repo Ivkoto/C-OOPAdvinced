@@ -46,7 +46,7 @@ namespace E08_PetClinics
 
         private bool ReleasePetFromClinic(string clinicName, List<Clinic> clinics)
         {
-            clinics.Where(c => c.Name == clinicName).First().TryRelesePet();
+            return clinics.Where(c => c.Name == clinicName).First().TryRelesePet();            
         }
 
         private bool AddPetToClinic(string petName, string clinicName, List<Pet> pets, List<Clinic> clinics)
