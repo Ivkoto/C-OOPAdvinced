@@ -35,13 +35,37 @@ namespace E08_PetClinics
                     break;
 
                 case "HasEmptyRooms":
-
+                    clinicName = commandArgs[0];
+                    Console.WriteLine(CheckForEmptyRooms(clinicName, clinics));
                     break;
 
                 case "Print":
-
+                    Console.WriteLine(PrintClinicInfo(commandArgs, clinics));
                     break;
             }
+        }
+
+        private string PrintClinicInfo(string[] commandArgs, List<Clinic> clinics)
+        {
+            var printResult = string.Empty;
+
+            var currentClinic = clinics.Where(c => c.Name == commandArgs[0]).FirstOrDefault();
+            if (commandArgs.Length == 1)
+            {
+                printResult = currentClinic.Print();
+            }
+            else
+            {
+                var currentRoomIndex = int.Parse(commandArgs[1]);
+                printResult = currentClinic.Print(currentRoomIndex - 1);
+            }
+
+            return printResult;
+        }
+
+        private bool CheckForEmptyRooms(string clinicName, List<Clinic> clinics)
+        {
+            return clinics.Where(c => c.Name == clinicName).First().HasEmptyRooms();
         }
 
         private bool ReleasePetFromClinic(string clinicName, List<Clinic> clinics)

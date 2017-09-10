@@ -14,5 +14,10 @@
         private int Age { get; set; }
 
         private string Kind { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Name} {this.Age} {this.Kind}";
+        }
     }
 }
