@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.12
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InterfacesAndAbstractionLab", "InterfacesAndAbstractionLab", "{690FEC9F-8481-4B9B-BD50-0D3E0256050D}"
 EndProject
@@ -82,6 +82,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E08_PetClinics", "E08_PetClinics\E08_PetClinics.csproj", "{1AFE6231-FB61-42BE-84D3-CDB6083337F5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E09_LinkedList", "E09_LinkedList\E09_LinkedList.csproj", "{AB809434-C74A-44BB-A500-3FBDE723BD23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnumsAndAttributesLab", "EnumsAndAttributesLab", "{D9429B31-C864-4250-8ABF-DDFC392F8DE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01_WeekDays", "L01_WeekDays\L01_WeekDays.csproj", "{8EFC85A5-9BD2-41B3-9BB9-82AF69BFF89A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CofeeMachine", "CofeeMachine\CofeeMachine.csproj", "{CFFE34A2-276F-4080-A279-BE2624FDA509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -225,6 +231,14 @@ Global
 		{AB809434-C74A-44BB-A500-3FBDE723BD23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB809434-C74A-44BB-A500-3FBDE723BD23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB809434-C74A-44BB-A500-3FBDE723BD23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EFC85A5-9BD2-41B3-9BB9-82AF69BFF89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFC85A5-9BD2-41B3-9BB9-82AF69BFF89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFC85A5-9BD2-41B3-9BB9-82AF69BFF89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFC85A5-9BD2-41B3-9BB9-82AF69BFF89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFE34A2-276F-4080-A279-BE2624FDA509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFE34A2-276F-4080-A279-BE2624FDA509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFE34A2-276F-4080-A279-BE2624FDA509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFE34A2-276F-4080-A279-BE2624FDA509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -264,6 +278,8 @@ Global
 		{D57F36BE-9182-4A14-AA93-FD2A6445BD9B} = {8BC218F1-1676-4BC5-A64D-F6B39947A625}
 		{1AFE6231-FB61-42BE-84D3-CDB6083337F5} = {8BC218F1-1676-4BC5-A64D-F6B39947A625}
 		{AB809434-C74A-44BB-A500-3FBDE723BD23} = {8BC218F1-1676-4BC5-A64D-F6B39947A625}
+		{8EFC85A5-9BD2-41B3-9BB9-82AF69BFF89A} = {D9429B31-C864-4250-8ABF-DDFC392F8DE1}
+		{CFFE34A2-276F-4080-A279-BE2624FDA509} = {D9429B31-C864-4250-8ABF-DDFC392F8DE1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14058608-E415-483C-B0C8-5986A5BCFA69}
