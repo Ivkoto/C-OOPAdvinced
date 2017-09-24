@@ -3,7 +3,7 @@
     public enum Lights
     {
         Red,
-        Yellow,
-        Green
+        Green,
+        Yellow
     }
 }
