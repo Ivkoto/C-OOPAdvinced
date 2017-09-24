@@ -10,6 +10,17 @@ namespace E08_CardGame
 
         public static void Main()
         {
+            GameStart();
+            PrintWinner();
+        }
+
+        private static void PrintWinner()
+        {
+            Console.WriteLine($"{winner} wins with {biggestCard.Name}.");
+        }
+
+        private static void GameStart()
+        {
             var firstPerson = Console.ReadLine();
             var secondPerson = Console.ReadLine();
 
@@ -46,9 +57,7 @@ namespace E08_CardGame
                 {
                     Console.WriteLine("No such card exists.");
                 }
-            }
-
-            Console.WriteLine($"{winner} wins with {biggestCard.Name}.");
+            }            
         }
 
         private static void BiggestCardCheck(Card currentCard, string currentPerson)
