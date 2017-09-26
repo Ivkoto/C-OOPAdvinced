@@ -111,6 +111,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E08_CardGame", "E08_CardGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E09_TrafficLights", "E09_TrafficLights\E09_TrafficLights.csproj", "{7BDCD7E5-BA17-4849-9219-1C32D40F5A69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E11_InfernoInfinity", "E11_InfernoInfinity\E11_InfernoInfinity.csproj", "{1F6E8A4C-B1D4-4F59-BE0A-43AADC028AF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -301,6 +303,10 @@ Global
 		{7BDCD7E5-BA17-4849-9219-1C32D40F5A69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BDCD7E5-BA17-4849-9219-1C32D40F5A69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BDCD7E5-BA17-4849-9219-1C32D40F5A69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F6E8A4C-B1D4-4F59-BE0A-43AADC028AF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F6E8A4C-B1D4-4F59-BE0A-43AADC028AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F6E8A4C-B1D4-4F59-BE0A-43AADC028AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F6E8A4C-B1D4-4F59-BE0A-43AADC028AF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -352,6 +358,7 @@ Global
 		{DE6FD63D-6066-434D-99FD-4D5620DCCA1C} = {52C7BC5E-C269-4BFD-BE0D-FAD80B7FEC70}
 		{7E1A543E-D070-46E9-A3E0-5680EF1B0B86} = {52C7BC5E-C269-4BFD-BE0D-FAD80B7FEC70}
 		{7BDCD7E5-BA17-4849-9219-1C32D40F5A69} = {52C7BC5E-C269-4BFD-BE0D-FAD80B7FEC70}
+		{1F6E8A4C-B1D4-4F59-BE0A-43AADC028AF9} = {52C7BC5E-C269-4BFD-BE0D-FAD80B7FEC70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {14058608-E415-483C-B0C8-5986A5BCFA69}
