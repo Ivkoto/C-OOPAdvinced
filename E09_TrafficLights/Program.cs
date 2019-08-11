@@ -13,26 +13,33 @@ namespace E09_TrafficLights
 
         private static void TurnTheTrafficLightsOn()
         {
-            var trafficLightsInput = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var trafficLights = new List<TrafficLight>();
-
-            foreach (var light in trafficLightsInput)
+            try
             {
-                var curLight = (Lights)Enum.Parse(typeof(Lights), light);
-                var trafficLight = new TrafficLight(curLight);
-                trafficLights.Add(trafficLight);
-            }
+                var trafficLightsInput = Console.ReadLine().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var trafficLights = new List<TrafficLight>();
 
-            var timesToChangeLight = int.Parse(Console.ReadLine());
-
-            for (int i = 0; i < timesToChangeLight; i++)
-            {
-                foreach (var trafficLight in trafficLights)
+                foreach (var light in trafficLightsInput)
                 {
-                    trafficLight.ChangeLight();
+                    var curLight = (Lights)Enum.Parse(typeof(Lights), light);
+                    var trafficLight = new TrafficLight(curLight);
+                    trafficLights.Add(trafficLight);
                 }
-                PrintCurrentState(trafficLights);
+
+                var timesToChangeLight = int.Parse(Console.ReadLine());
+
+                for (int i = 0; i < timesToChangeLight; i++)
+                {
+                    foreach (var trafficLight in trafficLights)
+                    {
+                        trafficLight.ChangeLight();
+                    }
+                    PrintCurrentState(trafficLights);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }            
         }
 
         private static void PrintCurrentState(List<TrafficLight> trafficLights)

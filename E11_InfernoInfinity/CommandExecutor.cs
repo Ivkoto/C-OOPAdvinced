@@ -1,4 +1,5 @@
 ﻿using E11_InfernoInfinity.Abstracts;
+using E11_InfernoInfinity.Attributes;
 using E11_InfernoInfinity.Enums;
 using E11_InfernoInfinity.Models;
 using System;
@@ -31,6 +32,7 @@ namespace E11_InfernoInfinity
                 case "Add":
                     AddGem();
                     break;
+
                 case "Remove":
                     RemoveGem();
                     break;
@@ -38,7 +40,34 @@ namespace E11_InfernoInfinity
                 case "Print":
                     PrintWeaponDetails();
                     break;
+
+                case "Author":
+                    var attrib = ExtractingAttributeValues();
+                    Console.WriteLine($"Author: {attrib.Author.ToString()}");
+                    break;
+
+                case "Revision":
+                    attrib = ExtractingAttributeValues();
+                    Console.WriteLine($"Revision: {attrib.Revision.ToString()}");
+                    break;
+
+                case "Description":
+                    attrib = ExtractingAttributeValues();
+                    Console.WriteLine($"Class description: {attrib.Description.ToString()}");
+                    break;
+
+                case "Reviewers":
+                    attrib = ExtractingAttributeValues();
+                    var reviewers = string.Join(", ", attrib.Reviewers);
+                    Console.WriteLine($"Reviewers: {reviewers}");
+                    break;
             }
+        }
+
+        private CustAttribute ExtractingAttributeValues()
+        {
+            var attr = (CustAttribute)typeof(Weapon).GetCustomAttributes(false).First();
+            return attr;
         }
 
         private void PrintWeaponDetails()

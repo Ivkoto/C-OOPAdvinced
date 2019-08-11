@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Abstracts\Gem.cs" />
     <Compile Include="Abstracts\Weapon.cs" />
+    <Compile Include="Attributes\CustAttribute.cs" />
     <Compile Include="CommandExecutor.cs" />
     <Compile Include="Enums\ClarityLevel.cs" />
     <Compile Include="Enums\RarityLevel.cs" />

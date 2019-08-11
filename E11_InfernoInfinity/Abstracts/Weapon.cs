@@ -1,9 +1,12 @@
 ﻿using E11_InfernoInfinity.Enums;
 using E11_InfernoInfinity.Interfaces;
 using E11_InfernoInfinity.Models;
+using E11_InfernoInfinity.Attributes;
+using System.Collections.Generic;
 
 namespace E11_InfernoInfinity.Abstracts
 {
+    [Cust("Pesho", 3, "Used for C# OOP Advanced Course - Enumerations and Attributes.", "Pesho", "Svetlio")]
     public abstract class Weapon : IWeapon
     {
         public Weapon(string name, RarityLevel rarityLevel, int minDamageInitialValue, int maxDamageInitialValue, int socketInitialNumber)

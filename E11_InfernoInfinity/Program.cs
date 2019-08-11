@@ -20,14 +20,22 @@ namespace E11_InfernoInfinity
             var weapons = new List<Weapon>();
 
             string input;
-            while ((input = Console.ReadLine()) != "END")
+            try
             {
-                var tokens = input.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-                var command = tokens[0];
-                var commandArgs = tokens.Skip(1).ToArray();
+                while ((input = Console.ReadLine()) != "END")
+                {
+                    var tokens = input.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                    var command = tokens[0];
+                    var commandArgs = tokens.Skip(1).ToArray();
 
-                var commandExecutor = new CommandExecutor(command, commandArgs, weapons);
-                commandExecutor.ExecuteCommand();
+                    var commandExecutor = new CommandExecutor(command, commandArgs, weapons);
+                    commandExecutor.ExecuteCommand();
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Unknown command!");
+                StartGame();
             }
         }
     }
